@@ -24,6 +24,11 @@ describe VideoEmbed do
       video_embed.should eql(%Q{<iframe src="http://player.vimeo.com/video/11040425?title=0&amp;byline=0&amp;portrait=0" width="560" height="315" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>})
     end
 
+    it 'returns embed html from a mobile url' do
+      video_embed = VideoEmbed.embed('http://vimeo.com/m/11040425')
+      video_embed.should include('http://player.vimeo.com/video/11040425?title=0&amp;byline=0&amp;portrait=0')
+    end
+
     it 'accepts a custom width' do
       video_embed = VideoEmbed.embed('http://vimeo.com/11040425', :width => 720)
       video_embed.should match(/width="720"/) 
