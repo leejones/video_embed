@@ -7,6 +7,11 @@ describe VideoEmbed do
       video_embed.should eql(%Q{<iframe width="560" height="315" src="http://www.youtube.com/embed/4Z3r9X8OahA?rel=0" frameborder="0" allowfullscreen></iframe>})
     end
 
+    it 'returns embed html from a short url' do
+      video_embed = VideoEmbed.embed('http://youtu.be/4Z3r9X8OahA')
+      video_embed.should include('http://www.youtube.com/embed/4Z3r9X8OahA?rel=0')
+    end
+
     it 'accepts a custom width' do
       video_embed = VideoEmbed.embed('http://www.youtube.com/watch?v=NtgtMQwr3Ko', :width => 1280)
       video_embed.should match(/width="1280"/) 

@@ -3,7 +3,7 @@ require 'cgi'
 class VideoEmbed
   class YouTube
     def url?(url)
-      url.host =~ /youtube\.com/
+      url.host =~ /(:?youtube\.com|youtu.be)/
     end
 
     def embed(url, options = {})
@@ -27,8 +27,16 @@ class VideoEmbed
       private
       
       def video_id
-        params = CGI.parse(url.query)
-        params['v'].first
+        if short_url?
+          url.path.match(/\/(.*)\??/)[1]
+        else
+          params = CGI.parse(url.query)
+          params['v'].first
+        end
+      end
+
+      def short_url?
+        url.host == 'youtu.be'
       end
     end
   end
