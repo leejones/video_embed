@@ -36,6 +36,16 @@ Specify a width and height:
     )
     => "<iframe source=\"...
 
+## Development
+
+Install the dependencies:
+
+    bundle
+
+Run the tests:
+
+    bundle exec rspec .
+
 ## Contributing
 
 1. Fork it
