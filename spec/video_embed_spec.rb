@@ -34,6 +34,11 @@ describe VideoEmbed do
       video_embed.should include('http://player.vimeo.com/video/11040425?title=0&amp;byline=0&amp;portrait=0')
     end
 
+    it 'returns embed html from an album url' do
+      video_embed = VideoEmbed.embed('http://vimeo.com/album/2590693/video/78279754')
+      video_embed.should include('http://player.vimeo.com/video/78279754?title=0&amp;byline=0&amp;portrait=0')
+    end
+
     it 'accepts a custom width' do
       video_embed = VideoEmbed.embed('http://vimeo.com/11040425', :width => 720)
       video_embed.should match(/width="720"/) 

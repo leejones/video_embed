@@ -25,7 +25,11 @@ class VideoEmbed
       private
       
       def video_id
-        url.to_s.match(/vimeo.com(?:\/m)?\/(\d*)\??/)[1]
+        if url.to_s =~ /album\/\d*\/video\//
+          url.to_s.match(/vimeo.com(?:\/m)?\/album\/\d*\/video\/(\d*)\??/)[1]
+        else
+          url.to_s.match(/vimeo.com(?:\/m)?\/(\d*)\??/)[1]
+        end
       end
     end
   end
