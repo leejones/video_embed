@@ -39,6 +39,11 @@ describe VideoEmbed do
       expect(video_embed).to include('http://player.vimeo.com/video/78279754?title=0&amp;byline=0&amp;portrait=0')
     end
 
+    it 'returns embed html from a channel url' do
+      video_embed = VideoEmbed.embed('https://vimeo.com/channels/staffpicks/107469289')
+      expect(video_embed).to include('http://player.vimeo.com/video/107469289?title=0&amp;byline=0&amp;portrait=0')
+    end
+
     it 'accepts a custom width' do
       video_embed = VideoEmbed.embed('http://vimeo.com/11040425', :width => 720)
       expect(video_embed).to match(/width="720"/) 
