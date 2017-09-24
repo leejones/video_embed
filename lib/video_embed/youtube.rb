@@ -21,7 +21,9 @@ class VideoEmbed
       end
 
       def embed
-        %Q{<iframe width="#{width}" height="#{height}" src="http://www.youtube.com/embed/#{video_id}?rel=0" frameborder="0" allowfullscreen></iframe>}
+        view_path = File.join(File.dirname(__FILE__),"../views/video/video_iframe.haml")
+        url = "https://www.youtube.com/embed/#{video_id}?rel=0"
+        Haml::Engine.new(File.read(view_path)).render(Object.new, url: url, height: @height, width: @width)
       end
 
       private
