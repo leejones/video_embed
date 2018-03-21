@@ -1,5 +1,6 @@
 require 'video_embed/version'
 require 'uri'
+require 'haml'
 
 class VideoEmbed
   attr_reader :services

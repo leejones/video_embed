@@ -19,7 +19,9 @@ class VideoEmbed
       end
 
       def embed
-        %Q{<iframe src="http://player.vimeo.com/video/#{video_id}?title=0&amp;byline=0&amp;portrait=0" width="#{width}" height="#{height}" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>}
+        view_path = File.join(File.dirname(__FILE__),"../views/video/video_iframe.haml")
+        url = "https://player.vimeo.com/video/#{video_id}"
+        Haml::Engine.new(File.read(view_path)).render(Object.new, url: url, height: @height, width: @width)
       end
 
       private
@@ -27,6 +29,8 @@ class VideoEmbed
       def video_id
         if url.to_s =~ /album\/\d*\/video\//
           url.to_s.match(/vimeo.com(?:\/m)?\/album\/\d*\/video\/(\d*)\??/)[1]
+        elsif url.to_s =~ /channels\/\w*\/(\d*)\??/
+          url.to_s.match(/vimeo.com(?:\/m)?\/channels\/\w*\/(\d*)\??/)[1]
         else
           url.to_s.match(/vimeo.com(?:\/m)?\/(\d*)\??/)[1]
         end
