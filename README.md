@@ -46,6 +46,20 @@ Run the tests:
 
     bundle exec rspec .
 
+## Development using Docker
+
+### Setup
+
+Install [Docker](https://docs.docker.com/install/).
+
+Build a Docker image with all dependencies:
+
+    make build
+
+### Run the tests
+
+    make test
+
 ## Contributing
 
 1. Fork it
