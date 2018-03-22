@@ -25,7 +25,7 @@ class VideoEmbed
       end
 
       private
-      
+
       def video_id
         if short_url?
           url.path.match(/\/(.*)\??/)[1]
