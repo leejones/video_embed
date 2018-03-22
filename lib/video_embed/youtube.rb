@@ -12,16 +12,17 @@ class VideoEmbed
     end
 
     class Url
-      attr_reader :url, :width, :height
+      attr_reader :url, :width, :height, :start_time
 
       def initialize(url, options = {})
         @url = url
         @width = options.fetch(:width, 560)
         @height = options.fetch(:height, 315)
+        @start_time = options.fetch(:start_time, 0)
       end
 
       def embed
-        %Q{<iframe width="#{width}" height="#{height}" src="http://www.youtube.com/embed/#{video_id}?rel=0" frameborder="0" allowfullscreen></iframe>}
+        %Q{<iframe width="#{width}" height="#{height}" src="http://www.youtube.com/embed/#{video_id}?rel=0&start=#{start_time}" frameborder="0" allowfullscreen></iframe>}
       end
 
       private

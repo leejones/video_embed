@@ -4,7 +4,7 @@ describe VideoEmbed do
   describe 'YouTube' do
     it 'returns embed html from a url' do
       video_embed = VideoEmbed.embed('http://www.youtube.com/watch?v=4Z3r9X8OahA&feature=fvwp&NR=1')
-      video_embed.should eql(%Q{<iframe width="560" height="315" src="http://www.youtube.com/embed/4Z3r9X8OahA?rel=0" frameborder="0" allowfullscreen></iframe>})
+      video_embed.should eql(%Q{<iframe width="560" height="315" src="http://www.youtube.com/embed/4Z3r9X8OahA?rel=0&start=0" frameborder="0" allowfullscreen></iframe>})
     end
 
     it 'returns embed html from a short url' do
